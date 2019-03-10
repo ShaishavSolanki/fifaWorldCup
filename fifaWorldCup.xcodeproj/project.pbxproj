@@ -20,6 +20,8 @@
 		4894FAF6223226300061E975 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4894FAF5223226300061E975 /* ExtensionDelegate.swift */; };
 		4894FAF8223226300061E975 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4894FAF7223226300061E975 /* ComplicationController.swift */; };
 		4894FAFA223226310061E975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4894FAF9223226310061E975 /* Assets.xcassets */; };
+		48D2E3032235A89B0021DBF8 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D2E3022235A89B0021DBF8 /* Team.swift */; };
+		48F2567022322B3800CC85E6 /* ScheduleRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F2566F22322B3800CC85E6 /* ScheduleRowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		4894FAF7223226300061E975 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		4894FAF9223226310061E975 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4894FAFB223226310061E975 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48D2E3022235A89B0021DBF8 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		48F2566F22322B3800CC85E6 /* ScheduleRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,8 @@
 				4894FAF3223226300061E975 /* InterfaceController.swift */,
 				4894FAF5223226300061E975 /* ExtensionDelegate.swift */,
 				4894FAF7223226300061E975 /* ComplicationController.swift */,
+				48F2566F22322B3800CC85E6 /* ScheduleRowController.swift */,
+				48D2E3022235A89B0021DBF8 /* Team.swift */,
 				4894FAF9223226310061E975 /* Assets.xcassets */,
 				4894FAFB223226310061E975 /* Info.plist */,
 			);
@@ -301,6 +307,8 @@
 				4894FAF6223226300061E975 /* ExtensionDelegate.swift in Sources */,
 				4894FAF4223226300061E975 /* InterfaceController.swift in Sources */,
 				4894FAF8223226300061E975 /* ComplicationController.swift in Sources */,
+				48D2E3032235A89B0021DBF8 /* Team.swift in Sources */,
+				48F2567022322B3800CC85E6 /* ScheduleRowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,15 +1,63 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="fifaWorldCup_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="left" title="Schedule" id="UsF-JC-Ex2">
+                            <connections>
+                                <segue destination="YyW-bo-shg" kind="push" id="A5a-mJ-dFh"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Subscribed Games" id="pzE-wf-uSi"/>
+                    </items>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="-41" y="71"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="2tP-Jh-bkv">
+            <objects>
+                <controller id="YyW-bo-shg" customClass="InterfaceController" customModule="fifaWorldCup_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="DbK-29-yrD">
+                            <items>
+                                <tableRow identifier="scheduleRow" id="QPv-So-Cpr" customClass="ScheduleRowController" customModule="fifaWorldCup_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="BvP-Gu-wLz">
+                                        <items>
+                                            <imageView width="24" height="24" alignment="center" verticalAlignment="center" id="Rru-lv-6L9"/>
+                                            <label width="20" height="20" alignment="center" verticalAlignment="center" text="vs" textAlignment="center" id="Ugg-PU-qia"/>
+                                            <label alignment="left" verticalAlignment="center" text="Team1" textAlignment="left" id="hd1-MJ-cKp"/>
+                                            <imageView width="24" height="24" alignment="center" verticalAlignment="center" id="dK8-Er-cUw"/>
+                                            <label alignment="right" verticalAlignment="center" text="Team2" id="EWw-s0-c14"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="TeamALabel" destination="hd1-MJ-cKp" id="Zlr-qv-Z7T"/>
+                                        <outlet property="TeamBLabel" destination="EWw-s0-c14" id="bNa-hU-tjv"/>
+                                        <outlet property="teamAImageView" destination="Rru-lv-6L9" id="kyP-Ot-OIB"/>
+                                        <outlet property="teamBImageView" destination="dK8-Er-cUw" id="RbI-ur-MSq"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="scheduleTable" destination="DbK-29-yrD" id="xWk-vs-f3m"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="273" y="71"/>
         </scene>
     </scenes>
 </document>
