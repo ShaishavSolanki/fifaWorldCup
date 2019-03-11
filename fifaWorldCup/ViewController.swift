@@ -8,63 +8,87 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+
+    @IBOutlet weak var tableView: UITableView!
     
-   
-   
-    var teamList:[Team] = []
+    let sharedPreferences = UserDefaults.standard
+
     
-    
+    var firstTeam = ["Canada", "Brazil", "U.S", "Canada", "U.S"]
+    var secondTeam = ["India", "Vietnam", "India", "Vietnam", "Brazil"]
+    var time = ["07:00 AM", "11:00 AM", "03:00 PM", "06:00 PM", "09:00 PM"]
+    var date = ["March 11, 2019", "March 11, 2019", "March 12, 2019", "March 12, 2019", "March 13, 2019"]
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teamList.count
+        return self.firstTeam.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleRow", for: indexPath)
-
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myRow") as! ScheduleTableViewCell
+        
+        cell.firstTeamLabel.text = self.firstTeam[indexPath.row]
+        cell.secondTeamLabel.text = self.secondTeam[indexPath.row]
+        cell.dateLabel.text = self.date[indexPath.row]
+        cell.timeLabel.text = self.time[indexPath.row]
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
+    }
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.scheduledGames()
-        for (i, g) in self.teamList.enumerated(){
-            let row = self.scheduleTable?.rowController(at: i) as? ScheduleRowController
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
+       
+        
+        
+    }
+    
+    
+    @IBAction func subscribeButton(_ sender: UIButton) {
+        
+        if(self.isKeyPresentInUserDefaults(key: "data")){
             
-            row?.TeamALabel.setText(g.teamAname!)
-            row?.TeamBLabel.setText(g.teamBname!)
-            row?.teamAImageView.setImage(UIImage(named: g.teamAImage!))
-            row?.teamBImageView.setImage(UIImage(named: g.teamBImage!))
-            //
+            let alert = UIAlertController(title: "Alert", message: "Valid Key", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            
+            // Data is not present
+            fillTheData()
+            
         }
         
     }
-
     
-    func scheduledGames() {
-        let s1 = Team(teamAname:"Canada", teamBname:"India", teamAImage:"002-canada", teamBImage:"003-india")
-        let s2 = Team(teamAname:"Brazil",teamBname:"Vietnam",  teamAImage:"001-brazil", teamBImage:"005-vietnam")
-        let s3 = Team(teamAname:"U.S",teamBname:"India", teamAImage:"004-united-states", teamBImage:"003-india")
-        let s4 = Team(teamAname:"Canada",teamBname:"Vietnam", teamAImage:"002-canada", teamBImage:"005-vietnam")
-        let s5 = Team(teamAname:"U.S",teamBname:"Brazil", teamAImage:"004-united-states", teamBImage:"001-brazil")
-        
-        teamList.append(s1)
-        teamList.append(s2)
-        teamList.append(s3)
-        teamList.append(s4)
-        teamList.append(s5)
-        
-        
+    
+    func fillTheData(){
+    
+        sharedPreferences.set(self.firstTeam, forKey: "sharedPreferencesFirstTeam")
+        sharedPreferences.set(self.secondTeam, forKey: "sharedPreferencesSecondTeam")
+        sharedPreferences.set(self.date, forKey: "sharedPreferencesDate")
+        sharedPreferences.set(self.time, forKey: "sharedPreferencesTime")
         
     }
     
-
+    // Check key  present
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
+    
 }
 

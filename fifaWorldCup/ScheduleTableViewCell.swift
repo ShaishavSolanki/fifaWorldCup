@@ -2,13 +2,19 @@
 //  ScheduleTableViewCell.swift
 //  fifaWorldCup
 //
-//  Created by Shaishav Solanki on 2019-03-10.
+//  Created by MacStudent on 2019-03-11.
 //  Copyright © 2019 Shaishav Solanki. All rights reserved.
 //
 
 import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var firstTeamLabel: UILabel!
+    @IBOutlet weak var secondTeamLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +26,7 @@ class ScheduleTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }
