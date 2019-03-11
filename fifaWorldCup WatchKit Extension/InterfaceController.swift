@@ -17,7 +17,6 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var scheduleTable: WKInterfaceTable!
     
     
-    var scheduleClass = ScheduleRowController()
     //creating teams
     var teamList:[Team] = []
     
