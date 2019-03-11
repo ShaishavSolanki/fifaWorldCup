@@ -52,11 +52,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfx-4N-Gu8">
-                                                    <rect key="frame" x="259" y="86" width="69" height="30"/>
+                                                    <rect key="frame" x="233" y="86" width="127" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Subscribe"/>
                                                     <connections>
-                                                        <action selector="subscribeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NSZ-qo-zuq"/>
+                                                        <action selector="subscribeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1hC-JX-cnf"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbi-Gr-GdQ">
@@ -72,6 +72,7 @@
                                             <outlet property="dateLabel" destination="Rbi-Gr-GdQ" id="zND-2r-CdX"/>
                                             <outlet property="firstTeamLabel" destination="DwI-lL-NCM" id="TjF-jh-bva"/>
                                             <outlet property="secondTeamLabel" destination="LRo-Yn-fgn" id="p9j-dn-xj6"/>
+                                            <outlet property="subscribeButton" destination="cfx-4N-Gu8" id="kM5-AM-oCL"/>
                                             <outlet property="timeLabel" destination="YBF-5b-3GO" id="kp7-k0-NXk"/>
                                         </connections>
                                     </tableViewCell>

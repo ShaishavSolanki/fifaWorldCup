@@ -14,6 +14,7 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var secondTeamLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var subscribeButton: UIButton!
     
 
     override func awakeFromNib() {

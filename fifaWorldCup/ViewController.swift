@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
 
     @IBOutlet weak var tableView: UITableView!
     
     let sharedPreferences = UserDefaults.standard
-
     
     var firstTeam = ["Canada", "Brazil", "U.S", "Canada", "U.S"]
     var secondTeam = ["India", "Vietnam", "India", "Vietnam", "Brazil"]
     var time = ["07:00 AM", "11:00 AM", "03:00 PM", "06:00 PM", "09:00 PM"]
     var date = ["March 11, 2019", "March 11, 2019", "March 12, 2019", "March 12, 2019", "March 13, 2019"]
+    
+    var subscribed = ["no", "no", "no", "no", "no"]
+
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,10 +32,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myRow") as! ScheduleTableViewCell
         
-        cell.firstTeamLabel.text = self.firstTeam[indexPath.row]
-        cell.secondTeamLabel.text = self.secondTeam[indexPath.row]
-        cell.dateLabel.text = self.date[indexPath.row]
-        cell.timeLabel.text = self.time[indexPath.row]
+        
+        cell.firstTeamLabel.text = sharedPreferences.array(forKey: "sharedPreferencesFirstTeam")?[indexPath.row] as? String
+        cell.secondTeamLabel.text = sharedPreferences.array(forKey: "sharedPreferencesSecondTeam")?[indexPath.row] as? String
+        cell.dateLabel.text = sharedPreferences.array(forKey: "sharedPreferencesDate")?[indexPath.row] as? String
+        cell.timeLabel.text = sharedPreferences.array(forKey: "sharedPreferencesTime")?[indexPath.row] as? String
+        
+        cell.subscribeButton.tag = indexPath.row
+        
+        let sb = sharedPreferences.array(forKey: "sharedPreferencesSubscribed")?[indexPath.row] as? String
+        
+        if(sb == "yes"){
+            cell.subscribeButton.setTitle("Subscribed!", for: .normal)
+        }else{
+            cell.subscribeButton.setTitle("Subscribe", for: .normal)
+        }
         
         return cell
     }
@@ -47,10 +60,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // Data is not present
+        if(self.isKeyPresentInUserDefaults(key: "sharedPreferencesData") == false){
+            fillTheData()
+        }
+        
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         
        
         
@@ -58,30 +75,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    @IBAction func subscribeButton(_ sender: UIButton) {
+    @IBAction func subscribeButtonPressed(_ sender: UIButton) {
         
-        if(self.isKeyPresentInUserDefaults(key: "data")){
-            
-            let alert = UIAlertController(title: "Alert", message: "Valid Key", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
-        }else{
-            
-            // Data is not present
-            fillTheData()
-            
-        }
+        let index = sender.tag
+        
+        var subscribed = ["no", "no", "no", "no", "no"]
+        
+        subscribed[index] = "yes"
+        
+        sharedPreferences.set(subscribed, forKey: "sharedPreferencesSubscribed")
+        
+        tableView.reloadData()
         
     }
     
     
+    
     func fillTheData(){
     
+        sharedPreferences.set(true, forKey: "sharedPreferencesData")
         sharedPreferences.set(self.firstTeam, forKey: "sharedPreferencesFirstTeam")
         sharedPreferences.set(self.secondTeam, forKey: "sharedPreferencesSecondTeam")
         sharedPreferences.set(self.date, forKey: "sharedPreferencesDate")
         sharedPreferences.set(self.time, forKey: "sharedPreferencesTime")
+        sharedPreferences.set(self.subscribed, forKey: "sharedPreferencesSubscribed")
         
     }
     

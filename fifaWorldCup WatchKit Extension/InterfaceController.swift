@@ -8,14 +8,16 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController {
     
     
-    
     @IBOutlet weak var scheduleTable: WKInterfaceTable!
     
+    let sharedPreferences = UserDefaults.standard
+
     
     //creating teams
     var teamList:[Team] = []
@@ -37,13 +39,10 @@ class InterfaceController: WKInterfaceController {
         
        
     }
- 
-   
 
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-        // Configure interface objects here.
     }
     
     override func willActivate() {
@@ -52,6 +51,7 @@ class InterfaceController: WKInterfaceController {
         super.willActivate()
         
         
+      
         self.scheduledGames()
        // if(self.scheduleTable != nil){
         self.scheduleTable?.setNumberOfRows(self.teamList.count, withRowType:"scheduleRow")
@@ -78,5 +78,4 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
 }
