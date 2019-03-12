@@ -136,9 +136,9 @@
 				4894FAD02232262D0061E975 /* AppDelegate.swift */,
 				4894FAD22232262D0061E975 /* ViewController.swift */,
 				4894FAD42232262D0061E975 /* Main.storyboard */,
-				4894FAD72232262E0061E975 /* Assets.xcassets */,
 				4894FAD92232262E0061E975 /* LaunchScreen.storyboard */,
 				4894FADC2232262E0061E975 /* Info.plist */,
+				4894FAD72232262E0061E975 /* Assets.xcassets */,
 				48D2E3082235E7870021DBF8 /* Team.swift */,
 				9B1B2BF122369DDA00B0A50C /* ScheduleTableViewCell.swift */,
 			);

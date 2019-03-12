@@ -11,7 +11,15 @@ import Foundation
 import WatchConnectivity
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController,WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+   
+    
+    
+    
     
     
     @IBOutlet weak var scheduleTable: WKInterfaceTable!
@@ -50,6 +58,13 @@ class InterfaceController: WKInterfaceController {
     
         super.willActivate()
         
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+
+        
         
       
         self.scheduledGames()
@@ -72,6 +87,20 @@ class InterfaceController: WKInterfaceController {
 //
         }
         
+        
+        print("Subscribed games is: \(sharedPreferences.value(forKey: "sharedPreferencesSubscribed"))")
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage subscribedGamesData: [String : Any]) {
+        // Play a "click" sound when you get the message
+        WKInterfaceDevice().play(.click)
+        
+        // output a debug message to the terminal
+        print("Got a message! \(subscribedGamesData)")
+        
+        // update the message with a label
+      //  messageLabel.setText("\(message)")
     }
     
     override func didDeactivate() {

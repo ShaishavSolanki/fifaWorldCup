@@ -9,7 +9,21 @@
 import UIKit
 import WatchConnectivity
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,WCSessionDelegate {
+   
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -54,6 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125
     }
+    
 
     
     
@@ -61,6 +76,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Data is not present
+       
+        if (WCSession.isSupported()) {
+            print("Yes it is!")
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+        
         if(self.isKeyPresentInUserDefaults(key: "sharedPreferencesData") == false){
             fillTheData()
         }
@@ -84,6 +107,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         subscribed[index] = "yes"
         
         sharedPreferences.set(subscribed, forKey: "sharedPreferencesSubscribed")
+        
+        if (WCSession.default.isReachable) {
+            // construct the message you want to send
+            // the message is in dictionary
+           // let message = ["Message": "Hello"]
+            
+            let subscribedGamesData = ["SubscribedGames" : "\(sharedPreferences.value(forKey: "sharedPreferencesSubscribed"))"]
+            // send the message to the watch
+            WCSession.default.sendMessage(subscribedGamesData, replyHandler: nil)
+        }
         
         tableView.reloadData()
         
