@@ -10,6 +10,9 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
     
+    
+    @IBOutlet weak var flagFirstTeam: UIImageView!
+    @IBOutlet weak var flagSecondTeam: UIImageView!
     @IBOutlet weak var firstTeamLabel: UILabel!
     @IBOutlet weak var secondTeamLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

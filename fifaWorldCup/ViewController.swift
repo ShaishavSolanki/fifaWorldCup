@@ -9,26 +9,15 @@
 import UIKit
 import WatchConnectivity
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,WCSessionDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-    
+  
 
     @IBOutlet weak var tableView: UITableView!
     
     let sharedPreferences = UserDefaults.standard
-    
+    var flagFirstTeam = ["002-canada", "001-brazil", "004-united-states", "002-canada", "004-united-states"]
+    var flagSecondTeam = ["003-india", "005-vietnam", "003-india", "005-vietnam", "001-brazil"]
     var firstTeam = ["Canada", "Brazil", "U.S", "Canada", "U.S"]
     var secondTeam = ["India", "Vietnam", "India", "Vietnam", "Brazil"]
     var time = ["07:00 AM", "11:00 AM", "03:00 PM", "06:00 PM", "09:00 PM"]
@@ -47,6 +36,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "myRow") as! ScheduleTableViewCell
         
         
+        cell.flagFirstTeam.image = UIImage(named: "\(sharedPreferences.array(forKey: "sharedPreferencesFlagFirstTeam")?[indexPath.row] as! String)")
+        cell.flagSecondTeam.image = UIImage(named: "\(sharedPreferences.array(forKey: "sharedPreferencesFlagSecondTeam")?[indexPath.row] as! String)")
         cell.firstTeamLabel.text = sharedPreferences.array(forKey: "sharedPreferencesFirstTeam")?[indexPath.row] as? String
         cell.secondTeamLabel.text = sharedPreferences.array(forKey: "sharedPreferencesSecondTeam")?[indexPath.row] as? String
         cell.dateLabel.text = sharedPreferences.array(forKey: "sharedPreferencesDate")?[indexPath.row] as? String
@@ -77,13 +68,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         // Data is not present
        
-        if (WCSession.isSupported()) {
-            print("Yes it is!")
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
-        
         if(self.isKeyPresentInUserDefaults(key: "sharedPreferencesData") == false){
             fillTheData()
         }
@@ -102,22 +86,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let index = sender.tag
         
-        var subscribed = ["no", "no", "no", "no", "no"]
-        
-        subscribed[index] = "yes"
-        
-        sharedPreferences.set(subscribed, forKey: "sharedPreferencesSubscribed")
-        
-        if (WCSession.default.isReachable) {
-            // construct the message you want to send
-            // the message is in dictionary
-           // let message = ["Message": "Hello"]
-            
-            let subscribedGamesData = ["SubscribedGames" : "\(sharedPreferences.value(forKey: "sharedPreferencesSubscribed"))"]
-            // send the message to the watch
-            WCSession.default.sendMessage(subscribedGamesData, replyHandler: nil)
+        var prev_array:[String] = self.sharedPreferences.array(forKey: "sharedPreferencesSubscribed") as! [String]
+    
+        if(prev_array[index] == "yes"){
+            prev_array[index] = "no"
+        }else{
+            prev_array[index] = "yes"
         }
         
+        
+        sharedPreferences.set(prev_array, forKey: "sharedPreferencesSubscribed")
+
         tableView.reloadData()
         
     }
@@ -125,8 +104,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func fillTheData(){
-    
         sharedPreferences.set(true, forKey: "sharedPreferencesData")
+        sharedPreferences.set(self.flagFirstTeam, forKey:"sharedPreferencesFlagFirstTeam")
+        sharedPreferences.set(self.flagSecondTeam, forKey:"sharedPreferencesFlagSecondTeam")
         sharedPreferences.set(self.firstTeam, forKey: "sharedPreferencesFirstTeam")
         sharedPreferences.set(self.secondTeam, forKey: "sharedPreferencesSecondTeam")
         sharedPreferences.set(self.date, forKey: "sharedPreferencesDate")
