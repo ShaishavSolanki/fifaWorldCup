@@ -23,6 +23,8 @@
 		48D2E3032235A89B0021DBF8 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D2E3022235A89B0021DBF8 /* Team.swift */; };
 		48D2E3092235E7870021DBF8 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D2E3082235E7870021DBF8 /* Team.swift */; };
 		48F2567022322B3800CC85E6 /* ScheduleRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F2566F22322B3800CC85E6 /* ScheduleRowController.swift */; };
+		9B077B442239487F0056B23C /* SubscribedGameRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B077B432239487F0056B23C /* SubscribedGameRowController.swift */; };
+		9B077B4622394F4E0056B23C /* SubscribedInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B077B4522394F4E0056B23C /* SubscribedInterfaceController.swift */; };
 		9B1B2BF222369DDA00B0A50C /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B2BF122369DDA00B0A50C /* ScheduleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		48D2E3022235A89B0021DBF8 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		48D2E3082235E7870021DBF8 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		48F2566F22322B3800CC85E6 /* ScheduleRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRowController.swift; sourceTree = "<group>"; };
+		9B077B432239487F0056B23C /* SubscribedGameRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedGameRowController.swift; sourceTree = "<group>"; };
+		9B077B4522394F4E0056B23C /* SubscribedInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedInterfaceController.swift; sourceTree = "<group>"; };
 		9B1B2BF122369DDA00B0A50C /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,8 @@
 				4894FAF5223226300061E975 /* ExtensionDelegate.swift */,
 				4894FAF7223226300061E975 /* ComplicationController.swift */,
 				48F2566F22322B3800CC85E6 /* ScheduleRowController.swift */,
+				9B077B432239487F0056B23C /* SubscribedGameRowController.swift */,
+				9B077B4522394F4E0056B23C /* SubscribedInterfaceController.swift */,
 				48D2E3022235A89B0021DBF8 /* Team.swift */,
 				4894FAF9223226310061E975 /* Assets.xcassets */,
 				4894FAFB223226310061E975 /* Info.plist */,
@@ -318,7 +324,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4894FAF6223226300061E975 /* ExtensionDelegate.swift in Sources */,
+				9B077B4622394F4E0056B23C /* SubscribedInterfaceController.swift in Sources */,
 				4894FAF4223226300061E975 /* InterfaceController.swift in Sources */,
+				9B077B442239487F0056B23C /* SubscribedGameRowController.swift in Sources */,
 				4894FAF8223226300061E975 /* ComplicationController.swift in Sources */,
 				48D2E3032235A89B0021DBF8 /* Team.swift in Sources */,
 				48F2567022322B3800CC85E6 /* ScheduleRowController.swift in Sources */,

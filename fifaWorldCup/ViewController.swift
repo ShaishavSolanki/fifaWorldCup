@@ -9,10 +9,14 @@
 import UIKit
 import WatchConnectivity
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
-  
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {}
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {}
+    
+    func sessionDidDeactivate(_ session: WCSession) {}
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     let sharedPreferences = UserDefaults.standard
@@ -72,12 +76,57 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             fillTheData()
         }
         
+        if (WCSession.isSupported()) {
+            print("Yes it is!")
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+        
+        
+        if (WCSession.default.isReachable) {
+            
+            var watchPassOnData:[String:[String]] = [String: [String]]()
+            
+            var sbArray:[String] = self.sharedPreferences.array(forKey: "sharedPreferencesSubscribed") as! [String]
+            
+            var watchFlagTeam1:[String] = [String]()
+            var watchFlagTeam2:[String] = [String]()
+            var watchTeam1:[String] = [String]()
+            var watchTeam2:[String] = [String]()
+            var watchDate:[String] = [String]()
+            var watchtime:[String] = [String]()
+            for i in 0..<5{
+                
+                print(" >> \(sbArray[i])")
+                
+                if(sbArray[i] == "yes"){
+                    watchFlagTeam1.append(self.flagFirstTeam[i])
+                    watchFlagTeam2.append(self.flagSecondTeam[i])
+                    watchTeam1.append(self.firstTeam[i])
+                    watchTeam2.append(self.secondTeam[i])
+                    watchDate.append(self.date[i])
+                    watchtime.append(self.time[i])
+                }
+                
+            }
+            
+            watchPassOnData["flagFirstTeam"] = watchFlagTeam1
+            watchPassOnData["flagSecondTeam"] = watchFlagTeam2
+            watchPassOnData["firstTeam"] = watchTeam1
+            watchPassOnData["secondTeam"] = watchTeam2
+            watchPassOnData["date"] = watchDate
+            watchPassOnData["time"] = watchtime
+            
+            
+            
+            WCSession.default.sendMessage(["watchData":watchPassOnData], replyHandler: nil)
+        }
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-       
-        
         
     }
     
@@ -96,6 +145,57 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         sharedPreferences.set(prev_array, forKey: "sharedPreferencesSubscribed")
+        
+        
+        if (WCSession.isSupported()) {
+            print("Yes it is!")
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+        
+        
+        if (WCSession.default.isReachable) {
+            
+            var watchPassOnData:[String:[String]] = [String: [String]]()
+            
+            var sbArray:[String] = self.sharedPreferences.array(forKey: "sharedPreferencesSubscribed") as! [String]
+            
+            var watchFlagTeam1:[String] = [String]()
+            var watchFlagTeam2:[String] = [String]()
+            var watchTeam1:[String] = [String]()
+            var watchTeam2:[String] = [String]()
+            var watchDate:[String] = [String]()
+            var watchtime:[String] = [String]()
+            for i in 0..<5{
+                
+                print(" >> \(sbArray[i])")
+                
+                if(sbArray[i] == "yes"){
+                    watchFlagTeam1.append(self.flagFirstTeam[i])
+                    watchFlagTeam2.append(self.flagSecondTeam[i])
+                    watchTeam1.append(self.firstTeam[i])
+                    watchTeam2.append(self.secondTeam[i])
+                    watchDate.append(self.date[i])
+                    watchtime.append(self.time[i])
+                }
+                
+            }
+            
+            watchPassOnData["flagFirstTeam"] = watchFlagTeam1
+            watchPassOnData["flagSecondTeam"] = watchFlagTeam2
+            watchPassOnData["firstTeam"] = watchTeam1
+            watchPassOnData["secondTeam"] = watchTeam2
+            watchPassOnData["date"] = watchDate
+            watchPassOnData["time"] = watchtime
+            
+            
+            
+            WCSession.default.sendMessage(["watchData":watchPassOnData], replyHandler: nil)
+        }
+        
+        
+        
 
         tableView.reloadData()
         

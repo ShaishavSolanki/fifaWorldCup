@@ -16,13 +16,9 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         
     }
     
-   
-    
-    
-    
-    
-    
+
     @IBOutlet weak var scheduleTable: WKInterfaceTable!
+    
     
     let sharedPreferences = UserDefaults.standard
 
@@ -68,13 +64,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         
       
         self.scheduledGames()
-       // if(self.scheduleTable != nil){
+
         self.scheduleTable?.setNumberOfRows(self.teamList.count, withRowType:"scheduleRow")
-        //}
-       // else{
-        //    print("Error getting the value")
-       // }
-        
         
 
         for (i, g) in self.teamList.enumerated(){
@@ -87,21 +78,35 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
 //
         }
         
-        
-        print("Subscribed games is: \(sharedPreferences.value(forKey: "sharedPreferencesSubscribed"))")
-        
     }
     
-    func session(_ session: WCSession, didReceiveMessage subscribedGamesData: [String : Any]) {
+    func session(_ session: WCSession, didReceiveMessage sharedPreferencesFirstTeam: [String : Any]) {
         // Play a "click" sound when you get the message
         WKInterfaceDevice().play(.click)
         
         // output a debug message to the terminal
-        print("Got a message! \(subscribedGamesData)")
+       //print("Got a message! \(sharedPreferencesFirstTeam)")
+   
         
-        // update the message with a label
-      //  messageLabel.setText("\(message)")
+        let watchData = sharedPreferencesFirstTeam["watchData"] as! [String: [String]]
+        
+      //  print(watchData["date"]!)
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    //For subscribed Games
+    
+    
+    
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible

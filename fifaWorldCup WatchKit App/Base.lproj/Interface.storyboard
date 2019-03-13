@@ -19,7 +19,11 @@
                                 <segue destination="YyW-bo-shg" kind="push" id="A5a-mJ-dFh"/>
                             </connections>
                         </button>
-                        <button width="1" alignment="left" title="Subscribed Games" id="pzE-wf-uSi"/>
+                        <button width="1" alignment="left" title="Subscribed Games" id="pzE-wf-uSi">
+                            <connections>
+                                <segue destination="o1z-Us-CkA" kind="push" id="sSr-eZ-YS2"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
@@ -65,7 +69,49 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="273" y="71"/>
+            <point key="canvasLocation" x="278" y="71"/>
+        </scene>
+        <!--Subscribed Interface Controller-->
+        <scene sceneID="Yb1-8b-Wur">
+            <objects>
+                <controller id="o1z-Us-CkA" customClass="SubscribedInterfaceController" customModule="fifaWorldCup_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="hho-8u-Xtu">
+                            <items>
+                                <tableRow identifier="subscribedGamesRow" id="Bcb-Vb-KOz" customClass="SubscribedGameRowController" customModule="fifaWorldCup_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="Xp4-FA-Vpa">
+                                        <items>
+                                            <group alignment="left" layout="vertical" id="EME-CU-yCr">
+                                                <items>
+                                                    <label alignment="center" verticalAlignment="bottom" text="Team1" textAlignment="center" id="sEJ-sI-wnV"/>
+                                                    <imageView width="24" height="24" alignment="center" id="m08-pd-YsI"/>
+                                                </items>
+                                            </group>
+                                            <label width="20" height="20" alignment="center" verticalAlignment="center" text="vs" textAlignment="center" id="ibF-gF-8X2"/>
+                                            <group alignment="right" layout="vertical" id="z7K-6K-m4x">
+                                                <items>
+                                                    <label alignment="center" verticalAlignment="bottom" text="Team2" textAlignment="center" id="vkY-q1-gfz"/>
+                                                    <imageView width="24" height="24" alignment="center" id="vH2-90-C6k"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="SubscribedTeamAImage" destination="m08-pd-YsI" id="1jd-I4-oIf"/>
+                                        <outlet property="SubscribedTeamAName" destination="sEJ-sI-wnV" id="F42-GV-UdP"/>
+                                        <outlet property="SubscribedTeamBImage" destination="vH2-90-C6k" id="FuN-7Y-YbZ"/>
+                                        <outlet property="SubscribedTeamBName" destination="vkY-q1-gfz" id="fnP-TT-a9A"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="SubscribedGameTable" destination="hho-8u-Xtu" id="YX7-st-hmd"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-41" y="551"/>
         </scene>
     </scenes>
 </document>
