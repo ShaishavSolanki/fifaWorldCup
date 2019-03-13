@@ -16,16 +16,18 @@ class Team: NSObject {
     
     var teamAImage:String?
     var teamBImage:String?
+    var matchdate:String?
 //
     convenience override init() {
-        self.init(teamAname:"", teamBname:"", teamAImage:"", teamBImage:"")
+        self.init(teamAname:"", teamBname:"", teamAImage:"", teamBImage:"", matchdate:"")
     }
     
-    init(teamAname:String, teamBname:String, teamAImage:String, teamBImage:String) {
+    init(teamAname:String, teamBname:String, teamAImage:String, teamBImage:String, matchdate:String) {
         self.teamAname = teamAname
         self.teamBname = teamBname
         self.teamAImage = teamAImage
         self.teamBImage = teamBImage
+        self.matchdate = matchdate
 //
     }
 

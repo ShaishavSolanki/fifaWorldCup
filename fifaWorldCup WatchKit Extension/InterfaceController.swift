@@ -28,11 +28,11 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     
      let countryFlagList = ["003-india","002-canada","001-brazil","004-united-states","005-vietnam"]
     func scheduledGames() {
-        let s1 = Team(teamAname:"Canada", teamBname:"India", teamAImage:"002-canada", teamBImage:"003-india")
-        let s2 = Team(teamAname:"Brazil",teamBname:"Vietnam",  teamAImage:"001-brazil", teamBImage:"005-vietnam")
-        let s3 = Team(teamAname:"U.S",teamBname:"India", teamAImage:"004-united-states", teamBImage:"003-india")
-        let s4 = Team(teamAname:"Canada",teamBname:"Vietnam", teamAImage:"002-canada", teamBImage:"005-vietnam")
-        let s5 = Team(teamAname:"U.S",teamBname:"Brazil", teamAImage:"004-united-states", teamBImage:"001-brazil")
+        let s1 = Team(teamAname:"Canada", teamBname:"India", teamAImage:"002-canada", teamBImage:"003-india", matchdate:"March 11, 2019" )
+        let s2 = Team(teamAname:"Brazil",teamBname:"Vietnam",  teamAImage:"001-brazil", teamBImage:"005-vietnam", matchdate:"March 11, 2019")
+        let s3 = Team(teamAname:"U.S",teamBname:"India", teamAImage:"004-united-states", teamBImage:"003-india", matchdate:"March 12, 2019")
+        let s4 = Team(teamAname:"Canada",teamBname:"Vietnam", teamAImage:"002-canada", teamBImage:"005-vietnam", matchdate:"March 12, 2019")
+        let s5 = Team(teamAname:"U.S",teamBname:"Brazil", teamAImage:"004-united-states", teamBImage:"001-brazil", matchdate:"March 13, 2019")
         
         teamList.append(s1)
         teamList.append(s2)
@@ -75,6 +75,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             row?.TeamBLabel.setText(g.teamBname!)
             row?.teamAImageView.setImage(UIImage(named: g.teamAImage!))
             row?.teamBImageView.setImage(UIImage(named: g.teamBImage!))
+            row?.matchDate.setText(g.matchdate!)
 //
         }
         

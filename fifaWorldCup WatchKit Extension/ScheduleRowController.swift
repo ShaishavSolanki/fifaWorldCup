@@ -11,6 +11,7 @@ import WatchKit
 class ScheduleRowController: NSObject {
 
     
+    @IBOutlet weak var matchDate: WKInterfaceLabel!
     @IBOutlet weak var TeamALabel: WKInterfaceLabel!
     
     @IBOutlet weak var TeamBLabel: WKInterfaceLabel!

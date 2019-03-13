@@ -37,19 +37,28 @@
                         <table alignment="left" id="DbK-29-yrD">
                             <items>
                                 <tableRow identifier="scheduleRow" id="QPv-So-Cpr" customClass="ScheduleRowController" customModule="fifaWorldCup_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="BvP-Gu-wLz">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="BvP-Gu-wLz">
                                         <items>
-                                            <group alignment="left" layout="vertical" id="gfx-vD-19w">
+                                            <group width="129" height="20" alignment="left" spacing="0.0" id="jJ4-j0-PKF">
                                                 <items>
-                                                    <label alignment="center" verticalAlignment="bottom" text="Team1" textAlignment="center" id="hd1-MJ-cKp"/>
-                                                    <imageView width="24" height="24" alignment="center" id="Rru-lv-6L9"/>
+                                                    <label width="136" alignment="center" text="Date" textAlignment="center" id="4bP-cp-wOk"/>
                                                 </items>
                                             </group>
-                                            <label width="20" height="20" alignment="center" verticalAlignment="center" text="vs" textAlignment="center" id="Ugg-PU-qia"/>
-                                            <group alignment="right" layout="vertical" id="3sf-jy-7nI">
+                                            <group width="1" alignment="left" spacing="0.0" id="4x4-DY-NVh">
                                                 <items>
-                                                    <label alignment="center" verticalAlignment="bottom" text="Team2" textAlignment="center" id="EWw-s0-c14"/>
-                                                    <imageView width="24" height="24" alignment="center" id="dK8-Er-cUw"/>
+                                                    <label width="20" height="20" alignment="center" verticalAlignment="center" text="vs" textAlignment="center" id="Ugg-PU-qia"/>
+                                                    <group alignment="right" layout="vertical" id="3sf-jy-7nI">
+                                                        <items>
+                                                            <label alignment="center" verticalAlignment="bottom" text="Team2" textAlignment="center" id="EWw-s0-c14"/>
+                                                            <imageView width="24" height="24" alignment="center" id="dK8-Er-cUw"/>
+                                                        </items>
+                                                    </group>
+                                                    <group alignment="left" layout="vertical" id="gfx-vD-19w">
+                                                        <items>
+                                                            <label alignment="center" verticalAlignment="bottom" text="Team1" textAlignment="center" id="hd1-MJ-cKp"/>
+                                                            <imageView width="24" height="24" alignment="center" id="Rru-lv-6L9"/>
+                                                        </items>
+                                                    </group>
                                                 </items>
                                             </group>
                                         </items>
@@ -57,6 +66,7 @@
                                     <connections>
                                         <outlet property="TeamALabel" destination="hd1-MJ-cKp" id="Zlr-qv-Z7T"/>
                                         <outlet property="TeamBLabel" destination="EWw-s0-c14" id="bNa-hU-tjv"/>
+                                        <outlet property="matchDate" destination="4bP-cp-wOk" id="8m4-HG-9P0"/>
                                         <outlet property="teamAImageView" destination="Rru-lv-6L9" id="kyP-Ot-OIB"/>
                                         <outlet property="teamBImageView" destination="dK8-Er-cUw" id="RbI-ur-MSq"/>
                                     </connections>
